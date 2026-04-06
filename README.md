@@ -1,36 +1,136 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Mobje SaaS Analytics Platform - Under Development
 
-## Getting Started
+A modern, lightweight customer behavior tracking SaaS built with Next.js, Prisma, and PostgreSQL.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🧠 Overview
+
+This project is a simplified analytics platform (similar to Google Analytics / Hotjar) that allows businesses to:
+
+* Track user activity on their websites
+* Monitor page views and events
+* Visualize data in a clean dashboard
+
+---
+
+## ⚙️ Tech Stack
+
+* **Frontend & Backend**: Next.js (App Router)
+* **Database**: PostgreSQL
+* **ORM**: Prisma
+* **Hosting**: Vercel
+* **Database Hosting**: TBC
+
+---
+
+## 📦 Features (MVP)
+
+* 🔐 Authentication (Register / Login)
+* 🏢 Multi-tenant architecture (Organizations)
+* 🌐 Website tracking (via script)
+* 📊 Analytics dashboard (page views, events)
+
+---
+
+## 🏗️ Project Structure
+
+```
+app/
+  (auth)/
+  (dashboard)/
+  api/
+
+lib/
+  db.ts
+
+prisma/
+  schema.prisma
+
+components/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧱 Database Schema
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Core models:
 
-## Learn More
+* **Organization**
+* **User**
+* **Site**
+* **Event**
 
-To learn more about Next.js, take a look at the following resources:
+Relationship:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+User → Organization → Sites → Events
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🚀 Getting Started
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Instruction wil be provided once MVP is complete
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🧠 Architecture
+
+```
+Client Website → tracker.js → API → Database → Dashboard
+```
+
+---
+
+## ⚠️ Current Status
+
+🚧 MVP in development
+🔜 Database setup complete
+🔜 Authentication system
+🔜 Tracking API
+🔜 Dashboard UI
+
+---
+
+## 🔮 Future Improvements
+
+* Real-time analytics
+* Event batching
+* Heatmaps
+* Funnel tracking
+* AI insights
+
+---
+
+## 💡 Learning Goals
+
+This project focuses on:
+
+* Full-stack development with Next.js
+* Prisma & PostgreSQL fundamentals
+* SaaS architecture (multi-tenancy)
+* Performance and scalability patterns
+
+---
+
+## 🧑‍💻 Author
+
+**Bivek Jang Gurung**  
+Front-End Developer | React Specialist 
+📍 Sydney, Australia  
+🌐 [bivekgurung.com](https://bivekgurung.com)  
+💼 [LinkedIn](https://www.linkedin.com/in/bivek-gurung-b4602a62/)
+
+---
+
+
+## 📄 License
+
+This project is licensed under the **MIT License** — free to explore, use, and learn from.
+
+---
+
+## 🙌 Acknowledgements
+
+Inspired by modern analytics tools like Google Analytics, Hotjar, and Mixpanel.
