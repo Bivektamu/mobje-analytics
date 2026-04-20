@@ -1,6 +1,7 @@
 import { createSiteAction } from "@/actions/site.action";
 import { getCurrentUser } from "@/lib/auth"
 import { getSitesByOrg } from "@/services/site.service";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default async function SitesPage() {
@@ -20,7 +21,11 @@ export default async function SitesPage() {
             <ul>
                 {
                     sites.map(site => (
-                        <li key={site.id}>{site.domain}</li>
+                        <li key={site.id}>
+                            <Link href={`/dashboard/sites/${site.id}`}>
+                            {site.domain}
+                            </Link>
+                        </li>
                     ))
                 }
             </ul>

@@ -14,6 +14,10 @@
             })
         })
     }
+
+        track('pageview')
+
+
     document.addEventListener("click", function() {
         track('click')
     })

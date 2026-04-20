@@ -53,7 +53,6 @@ export async function POST(req: Request) {
         })
 
     } catch (error) {
-        console.log(error.message)
         return Response.json({
             error: "Something went wrong"
         },
