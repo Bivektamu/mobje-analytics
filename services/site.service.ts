@@ -1,15 +1,18 @@
-import { getCurrentUser } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { SiteInput } from "@/typeDefs";
+import { randomBytes } from "node:crypto";
 
 
 export  async function createSite(siteInput: SiteInput) {
     {
         const { domain, orgId } = siteInput
+
+        const apiKey = randomBytes(16).toString("hex")
         return db.site.create({
             data: {
                 domain,
-                organizationId: orgId
+                organizationId: orgId,
+                apiKey
             }
         })
     }

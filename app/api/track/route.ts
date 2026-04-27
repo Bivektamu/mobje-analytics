@@ -1,6 +1,4 @@
 import { db } from "@/lib/db";
-import { error } from "console";
-
 const allowedOrigin = "*"
 
 export async function OPTIONS() {
@@ -17,9 +15,8 @@ export async function OPTIONS() {
 export async function POST(req: Request) {
     try {
         const body = await req.json()
-        const { siteId, type, path } = body
-        console.log(siteId, type, path)
-        if (!siteId || !type) {
+        const { apiKey, type, path } = body
+        if (!apiKey || !type) {
             return Response.json({
                 error: 'Missing fields'
             }, {
@@ -30,17 +27,25 @@ export async function POST(req: Request) {
 
         const site = await db.site.findUnique({
             where: {
-                id: siteId
+                apiKey
             }
         })
 
-        if (!site) Response.json({
-            error: 'Invalid Site'
-        }, { status: 403 })
-        
+        if (!site)
+            return Response.json({
+                error: 'Invalid API Key'
+            }, { status: 403 })
+
+        // Domain validation
+        const origin = req.headers.get("origin")
+        if (origin && !origin.includes(site.domain))
+            return Response.json({
+                error: 'Invalid Domain',
+            }, { status: 403 })
+
         await db.event.create({
             data: {
-                siteId,
+                siteId: site.id,
                 type,
                 path: path || '/'
             }
@@ -54,7 +59,7 @@ export async function POST(req: Request) {
 
     } catch (error) {
         return Response.json({
-            error: "Something went wrong"
+            error:  "Server Error"
         },
             {
                 status: 500,
